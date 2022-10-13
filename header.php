@@ -22,22 +22,34 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'maga-zine' ); ?></a>
-
-	<header id="masthead" class="site-header">
-			<div class="top-header">
-				<div class="container">
-					Top Container
-				</div>
+<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'maga-zine' ); ?></a>
+	<div class="top-header">
+		<div class="container">
+			<div class="">
+				<?php if ( is_active_sidebar('top-header-left') ) { ?>
+					<div class="sidebar">
+						<?php dynamic_sidebar('top-header-left'); ?>
+					</div>
+				<?php } ?>
 			</div>
+			<div class="">
+				<?php if ( is_active_sidebar('top-header-right') ) { ?>
+					<div class="sidebar">
+						<?php dynamic_sidebar('top-header-right'); ?>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
+	</div>
+
+	<header id="masthead" class="site-header sticky-top">
 			<div class="site-branding">
 				<div class="container">
 					<?php
 					the_custom_logo();
 					if ( is_front_page() && is_home() ) :
 						?>
-						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><i class="fa-solid fa-hands"></i> <?php bloginfo( 'name' ); ?></a></h1>
 						<?php
 					else :
 						?>
@@ -67,3 +79,4 @@
 			</div>
 		</div>
 	</header><!-- #masthead -->
+<div id="page" class="site">

@@ -15,22 +15,22 @@
 	<footer id="colophon" class="site-footer">
 			<div class="footer-widgets">
 				<div class="container">
-					<div class="row align-items-start">
-						<div class="col-md-4">
+					<div class="row row-cols-3">
+						<div class="col">
 							<?php if ( is_active_sidebar('footer-widgets-1') ) { ?>
 								<div class="sidebar">
 									<?php dynamic_sidebar('footer-widgets-1'); ?>
 								</div>
 							<?php } ?>
 						</div>
-						<div class="col-md-4">
+						<div class="col">
 							<?php if ( is_active_sidebar('footer-widgets-2') ) { ?>
 								<div class="sidebar">
 									<?php dynamic_sidebar('footer-widgets-2'); ?>
 								</div>
 							<?php } ?>
 						</div>
-						<div class="col-md-4">
+						<div class="col">
 							<?php if ( is_active_sidebar('footer-widgets-3') ) { ?>
 								<div class="sidebar">
 									<?php dynamic_sidebar('footer-widgets-3'); ?>

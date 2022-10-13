@@ -13,34 +13,47 @@
 
 	
 	<footer id="colophon" class="site-footer">
-		<div class="container">
 			<div class="footer-widgets">
-				<div class="row align-items-start">
-					<div class="col">
-					One of three columns
-					</div>
-					<div class="col">
-					One of three columns
-					</div>
-					<div class="col">
-					One of three columns
+				<div class="container">
+					<div class="row align-items-start">
+						<div class="col-md-4">
+							<?php if ( is_active_sidebar('footer-widgets-1') ) { ?>
+								<div class="sidebar">
+									<?php dynamic_sidebar('footer-widgets-1'); ?>
+								</div>
+							<?php } ?>
+						</div>
+						<div class="col-md-4">
+							<?php if ( is_active_sidebar('footer-widgets-2') ) { ?>
+								<div class="sidebar">
+									<?php dynamic_sidebar('footer-widgets-2'); ?>
+								</div>
+							<?php } ?>
+						</div>
+						<div class="col-md-4">
+							<?php if ( is_active_sidebar('footer-widgets-3') ) { ?>
+								<div class="sidebar">
+									<?php dynamic_sidebar('footer-widgets-3'); ?>
+								</div>
+							<?php } ?>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="site-info">
-				<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'maga-zine' ) ); ?>">
+				<div class="container">
+					<!-- <a href="<?php //echo esc_url( __( 'https://wordpress.org/', 'maga-zine' ) ); ?>">
+						<?php
+						/* translators: %s: CMS name, i.e. WordPress. */
+						//printf( esc_html__( 'Proudly powered by %s', 'maga-zine' ), 'WordPress' );
+						?>
+					</a> -->
 					<?php
-					/* translators: %s: CMS name, i.e. WordPress. */
-					printf( esc_html__( 'Proudly powered by %s', 'maga-zine' ), 'WordPress' );
+						/* translators: 1: Theme name, 2: Theme author. */
+						printf( esc_html__( 'Theme: %1$s by %2$s.', 'maga-zine' ), 'maga-zine', '<a href="https://www.joblenda.me/">John Oblenda</a>' );
 					?>
-				</a>
-				<span class="sep"> | </span>
-					<?php
-					/* translators: 1: Theme name, 2: Theme author. */
-					printf( esc_html__( 'Theme: %1$s by %2$s.', 'maga-zine' ), 'maga-zine', '<a href="https://www.joblenda.me/">John Oblenda</a>' );
-					?>
+				</div>
 			</div><!-- .site-info -->
-		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

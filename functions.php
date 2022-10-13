@@ -84,6 +84,7 @@ function maga_zine_setup() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+	add_theme_support('align-wide');
 
 	/**
 	 * Add support for core custom logo.
@@ -131,6 +132,42 @@ function maga_zine_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
+
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Footer Widgets 1', 'maga-zine' ),
+			'id'            => 'footer-widgets-1',
+			'description'   => esc_html__( 'Add widgets here.', 'maga-zine' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Footer Widgets 2', 'maga-zine' ),
+			'id'            => 'footer-widgets-2',
+			'description'   => esc_html__( 'Add widgets here.', 'maga-zine' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Footer Widgets 3', 'maga-zine' ),
+			'id'            => 'footer-widgets-3',
+			'description'   => esc_html__( 'Add widgets here.', 'maga-zine' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
 }
 add_action( 'widgets_init', 'maga_zine_widgets_init' );
 
@@ -145,6 +182,7 @@ function maga_zine_scripts() {
 	wp_enqueue_style( 'custom-style', get_template_directory_uri() . '/inc/css/custom.css' );
 
 	wp_enqueue_script( 'bootstrap-js' , get_template_directory_uri() . '/bootstrap/js/bootstrap.bundle.min.js', array('jquery') );
+	wp_enqueue_script( 'fontawesome-js' , 'https://kit.fontawesome.com/47a44c9676.js', array('jquery') );
 	wp_enqueue_script( 'maga-zine-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

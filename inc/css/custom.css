@@ -9,6 +9,15 @@ a,
 ul li {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
+  -webkit-transition: all 0.2 ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+  color: rgb(214, 36, 36) !important;
 }
 
 h1,
@@ -20,6 +29,26 @@ h6 {
   font-family: "Poppins", sans-serif;
 }
 
+/* .alignfull {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+} */
+
+/*Header*/
+.top-header {
+  background: #ca65dd;
+  background: -webkit-linear-gradient(top left, #ca65dd, #d7154d);
+  background: -moz-linear-gradient(top left, #ca65dd, #d7154d);
+  background: linear-gradient(to bottom right, #ca65dd, #d7154d);
+  color: #fff;
+  padding: 10px 0;
+}
+
+/*Footer*/
 .site-footer {
   background: #030303;
   color: #fff;
@@ -29,6 +58,57 @@ h6 {
   padding-top: 60px;
 }
 
+.footer-widgets ul,
+.footer-widgets ul li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-widgets .wp-block-latest-posts__post-title {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.footer-widgets h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+a.wp-block-social-link-anchor {
+  font-size: 16px;
+}
+
+.wp-block-latest-posts__post-date::before {
+  display: inline-block;
+  content: "";
+  vertical-align: -0.125em;
+  font-family: "Font Awesome 5 Free";
+  content: "\f017";
+  background-repeat: no-repeat;
+  background-size: 1rem 1rem;
+  margin-right: 5px;
+}
+
+.footer-widgets .wp-block-categories li {
+  border-bottom: 1px solid #202020 !important;
+  padding: 8px 0px;
+}
+
+.footer-widgets .wp-block-categories li:first-child {
+  padding-top: 0;
+}
+
+.footer-widgets .wp-block-categories li a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .site-info {
   padding: 25px 0 20px;
+  font-size: 11px;
+  color: #fff;
+  border-top: 1px solid #202020;
 }

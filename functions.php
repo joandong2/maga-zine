@@ -193,10 +193,13 @@ function maga_zine_scripts() {
 
 	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css' );
 	wp_enqueue_style( 'custom-style', get_template_directory_uri() . '/inc/css/custom.css' );
+	wp_enqueue_style( 'slick-style', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css' );
 
-	wp_enqueue_script( 'bootstrap-js' , get_template_directory_uri() . '/bootstrap/js/bootstrap.bundle.min.js', array('jquery') );
-	wp_enqueue_script( 'fontawesome-js' , 'https://kit.fontawesome.com/47a44c9676.js', array('jquery') );
+	wp_enqueue_script( 'bootstrap-js' , get_template_directory_uri() . '/bootstrap/js/bootstrap.bundle.min.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'fontawesome-js' , '//kit.fontawesome.com/47a44c9676.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'slick-js' , '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), _S_VERSION, true );
 	wp_enqueue_script( 'maga-zine-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'custom-js' , get_template_directory_uri() . '/inc/js/custom.js', array('jquery'),_S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -237,3 +240,37 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+/**
+ * Slider Shortcode
+ */
+function _jo_slick_slider($atts = []) {
+	$output = "";
+    $default = array(
+        'link' => '#',
+    );
+    $a = shortcode_atts($default, $atts);
+      
+	$postslist = get_posts( array(
+		'posts_per_page' => 10,
+		'order'          => 'ASC',
+		'orderby'        => 'title',
+		'post_type'		 => 'post'
+	) );
+	
+	if ( $postslist ) { 
+		$output .= '<div class="your-class">';	
+		foreach ( $postslist as $post ) :
+			setup_postdata( $post );
+			$output .= '<div>';
+			$output .= get_the_post_thumbnail($post->ID);
+			$output .= $post->post_title;  
+			$output .= '</div>';
+		endforeach;
+		$output .= '</div>';
+		wp_reset_postdata();
+	}
+
+	return $output;
+}
+add_shortcode('jo_slick_slider', '_jo_slick_slider');

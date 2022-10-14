@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Pacifico&family=Poppins&display=swap");
 
 body {
   font-family: "Montserrat", sans-serif;
@@ -15,11 +15,23 @@ ul li {
   -o-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
+  color: #030303;
 }
 
-/* a:hover {
-  color: rgb(214, 36, 36);
-} */
+a:visited {
+  color: #000;
+}
+
+a:hover {
+  color: #dd252e;
+}
+
+p.site-title a {
+  font-family: "Pacifico", cursive;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-size: 32px;
+}
 
 .post,
 .page {
@@ -54,9 +66,60 @@ h6 {
   padding: 10px 0;
 }
 
+.top-header p,
+.top-header .widget {
+  margin: 0;
+  color: #fff;
+}
+
+.top-header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top-header ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.top-header ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.top-header ul li a:hover {
+  color: #dd252e;
+}
+
+.site-branding {
+  text-align: center;
+}
+
+.main-navigation {
+  margin-top: 20px;
+}
+
+.main-navigation li {
+  margin-right: 8px;
+}
+
+.main-navigation a {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-family: "Poppins", sans-serif;
+}
+
 /*Footer*/
 .site-footer {
   background: #030303;
+  color: #fff;
+}
+
+.site-footer p,
+.site-footer a,
+.site-footer ul li {
   color: #fff;
 }
 

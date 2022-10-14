@@ -25,26 +25,25 @@
 <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'maga-zine' ); ?></a>
 	<div class="top-header">
 		<div class="container">
-			<div class="">
-				<?php if ( is_active_sidebar('top-header-left') ) { ?>
-					<div class="sidebar">
-						<?php dynamic_sidebar('top-header-left'); ?>
-					</div>
-				<?php } ?>
-			</div>
-			<div class="">
-				<?php if ( is_active_sidebar('top-header-right') ) { ?>
-					<div class="sidebar">
-						<?php dynamic_sidebar('top-header-right'); ?>
-					</div>
-				<?php } ?>
+			<div class="row">
+				<div class="col">
+					<?php if ( is_active_sidebar('top-header-left') ) { ?>
+						<div class="sidebar">
+							<?php dynamic_sidebar('top-header-left'); ?>
+						</div>
+					<?php } ?>
+				</div>
+				<div class="col-md-2">
+					<p class="text-right"> <?php echo "Today is " . date("F j, Y") . "<br>"; ?></p>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<header id="masthead" class="site-header sticky-top">
-			<div class="site-branding">
-				<div class="container">
+		<div class="container">
+			<div class="row align-items-start">
+				<div class="site-branding col-md-1">
 					<?php
 					the_custom_logo();
 					if ( is_front_page() && is_home() ) :
@@ -54,18 +53,9 @@
 					else :
 						?>
 						<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-						<?php
-					endif;
-					$maga_zine_description = get_bloginfo( 'description', 'display' );
-					if ( $maga_zine_description || is_customize_preview() ) :
-						?>
-						<p class="site-description"><?php echo $maga_zine_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
 					<?php endif; ?>
-				</div>
-			</div><!-- .site-branding -->
-			
-			<div class="container">
-				<nav id="site-navigation" class="main-navigation">
+				</div><!-- .site-branding -->
+				<nav id="site-navigation" class="main-navigation col">
 					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'maga-zine' ); ?></button>
 					<?php
 					wp_nav_menu(

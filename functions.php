@@ -252,19 +252,28 @@ function _jo_slick_slider($atts = []) {
     $a = shortcode_atts($default, $atts);
       
 	$postslist = get_posts( array(
-		'posts_per_page' => 10,
+		'posts_per_page' => 12,
 		'order'          => 'ASC',
-		'orderby'        => 'title',
+		'orderby'        => 'date',
 		'post_type'		 => 'post'
+		//'category' => 1
 	) );
 	
 	if ( $postslist ) { 
 		$output .= '<div class="your-class">';	
 		foreach ( $postslist as $post ) :
 			setup_postdata( $post );
-			$output .= '<div>';
+			$terms_list = wp_get_post_categories( $post->ID, array( 'fields'=>'names',  ) );
+			$output .= '<div class="_slick-slides">';
 			$output .= get_the_post_thumbnail($post->ID);
-			$output .= $post->post_title;  
+				$output .= '<div class="content">';
+					$output .= '<ul class="categories">';
+						foreach ( $terms_list as $term ) {
+							$output .= '<li class="'.esc_html( strtolower($term) ).'"><a href="#">'.esc_html( $term ).'</a></li>';
+						}
+					$output .= '</ul>';
+					$output .= '<h3><a href="#">'.$post->post_title.'</a></h3>';
+				$output .= '</div>';
 			$output .= '</div>';
 		endforeach;
 		$output .= '</div>';

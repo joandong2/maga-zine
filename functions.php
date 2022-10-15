@@ -193,7 +193,8 @@ function maga_zine_scripts() {
 
 	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css' );
 	wp_enqueue_style( 'custom-style', get_template_directory_uri() . '/inc/css/custom.css' );
-	wp_enqueue_style( 'slick-style', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css' );
+	wp_enqueue_style( 'slick-style', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css' );
+	wp_enqueue_style( 'slick-theme-style', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css' );
 
 	wp_enqueue_script( 'bootstrap-js' , get_template_directory_uri() . '/bootstrap/js/bootstrap.bundle.min.js', array('jquery'), _S_VERSION, true );
 	wp_enqueue_script( 'fontawesome-js' , '//kit.fontawesome.com/47a44c9676.js', array('jquery'), _S_VERSION, true );
@@ -264,9 +265,11 @@ function _jo_slick_slider($atts = []) {
 		foreach ( $postslist as $post ) :
 			setup_postdata( $post );
 			$terms_list = wp_get_post_categories( $post->ID, array( 'fields'=>'names',  ) );
-			$output .= '<div class="_slick-slides">';
-			$output .= get_the_post_thumbnail($post->ID);
-				$output .= '<div class="content">';
+			$featured_image = get_the_post_thumbnail_url($post->ID, 'full');
+
+			$output .= '<div class="_slick-slides" style="background-image:url('.$featured_image.')">';
+				$output .= '<div class="overlay"></div>';
+				$output .= '<div class="content d-flex align-items-center justify-content">';
 					$output .= '<ul class="categories">';
 						foreach ( $terms_list as $term ) {
 							$output .= '<li class="'.esc_html( strtolower($term) ).'"><a href="#">'.esc_html( $term ).'</a></li>';
@@ -283,3 +286,50 @@ function _jo_slick_slider($atts = []) {
 	return $output;
 }
 add_shortcode('jo_slick_slider', '_jo_slick_slider');
+
+/**
+ * Slider Shortcode
+ */
+function _jo_recent_posts($atts = []) {
+	$output = "";
+    $default = array(
+        'link' => '#',
+    );
+    $a = shortcode_atts($default, $atts);
+      
+	$postslist = get_posts( array(
+		'posts_per_page' => -1,
+		'order'          => 'ASC',
+		'orderby'        => 'date',
+		'post_type'		 => 'post'
+		//'category' => 1
+	) );
+	
+	if ( $postslist ) { 
+		$output .= '<div class="_jo-recent-posts">';	
+		foreach ( $postslist as $post ) :
+			setup_postdata( $post );
+			$terms_list = wp_get_post_categories( $post->ID, array( 'fields'=>'names',  ) );
+			$featured_image = get_the_post_thumbnail_url($post->ID, 'full');
+
+			$output .= '<div class="_jo-recent-post">';
+				$output .= '<div class="featured-image" style="background-image:url('.$featured_image.')">';
+					$output .= '<ul class="categories">';
+						foreach ( $terms_list as $term ) {
+							$output .= '<li class="'.esc_html( strtolower($term) ).'"><a href="#">'.esc_html( $term ).'</a></li>';
+						}
+					$output .= '</ul>';
+				$output .= '</div>';
+				$output .= '<div class="content">';
+					$output .= '<h3><a href="#">'.$post->post_title.'</a></h3>';
+					$output .= '<p>'.$post->post_excerpt.'</p>';
+				$output .= '</div>';
+			$output .= '</div>';
+		endforeach;
+		$output .= '</div>';
+		wp_reset_postdata();
+	}
+
+	return $output;
+}
+add_shortcode('jo_recent_posts', '_jo_recent_posts');

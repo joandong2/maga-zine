@@ -2,7 +2,10 @@
   $(".your-class").slick({
     dots: true,
     arrows: false,
-    speed: 300,
+    speed: 700,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2000,
     slidesToShow: 5,
     slidesToScroll: 3,
     responsive: [

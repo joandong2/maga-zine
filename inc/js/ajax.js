@@ -15,7 +15,7 @@ jQuery(function ($) {
           $("#load-more").hide();
         }
         //console.log("h2h2h2", res);
-        $(".publication-list").append(res);
+        $("._jo-recent-posts").append(res);
       });
   });
 });

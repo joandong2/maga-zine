@@ -195,9 +195,10 @@ function maga_zine_scripts() {
 	wp_enqueue_style( 'custom-style', get_template_directory_uri() . '/inc/css/custom.css' );
 	wp_enqueue_style( 'slick-style', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css' );
 	wp_enqueue_style( 'slick-theme-style', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css' );
+	wp_enqueue_style( 'fa-style', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' );
 
 	wp_enqueue_script( 'bootstrap-js' , get_template_directory_uri() . '/bootstrap/js/bootstrap.bundle.min.js', array('jquery'), _S_VERSION, true );
-	wp_enqueue_script( 'fontawesome-js' , '//kit.fontawesome.com/47a44c9676.js', array('jquery'), _S_VERSION, true );
+	wp_enqueue_script( 'fontawesome-js' , 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js', array('jquery'), _S_VERSION, true );
 	wp_enqueue_script( 'slick-js' , '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), _S_VERSION, true );
 	wp_enqueue_script( 'maga-zine-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'custom-js' , get_template_directory_uri() . '/inc/js/custom.js', array('jquery'), _S_VERSION, true );
@@ -342,31 +343,31 @@ add_shortcode('jo_slick_slider', '_jo_slick_slider');
 // add_shortcode('jo_recent_posts', '_jo_recent_posts');
 
 function _jo_recent_posts($atts = []) {
-	$posts = new WP_Query([
+	$args = array(  
 		'post_type' => 'post',
-		'posts_per_page' => 3,
+		'posts_per_page' => 4,
 		'orderby' => 'date',
 		'order' => 'DESC',
 		'paged' => 1,
-	  ]);
-	  ?>
-	  
-	  <?php if($posts->have_posts()): ?>
-		<ul class="publication-list">
-		  <?php 
-			while ($posts->have_posts()): $posts->the_post();
-			  //get_template_part('parts/card', 'publication');
-			  get_template_part( 'template-parts/content', get_post_type() );
-			endwhile;
-		  ?>
-		</ul>
-	  <?php endif; ?>
-	  <?php wp_reset_postdata(); ?>
-	  
-	  <div class="btn__wrapper">
-		<a href="#!" class="btn btn__primary" id="load-more">Load more</a>
-	  </div>
-<?php }
+	);
+
+	$loop = new WP_Query( $args ); 
+	ob_start();
+	?> 	<div class="_jo-recent-posts"> <?php
+		if($loop->have_posts()):
+				while ($loop->have_posts()): $loop->the_post();
+					get_template_part( 'template-parts/content-custom', get_post_type() );
+				endwhile;
+		endif; 
+	?>	</div>
+		<div class="btn__wrapper">
+			<a href="javascript:void(0);" class="btn btn__primary" id="load-more">Load more</a>
+		</div> <?php
+	wp_reset_postdata();
+
+	$output = ob_get_clean();
+    return $output;
+}
 add_shortcode('jo_recent_posts', '_jo_recent_posts');
 
 function jo_load_more() {
@@ -376,7 +377,7 @@ function jo_load_more() {
 
 	$args = array(  
 		'post_type' => 'post',
-		'posts_per_page' => 3,
+		'posts_per_page' => 4,
 		'orderby' => 'date',
 		'order' => 'DESC',
 		'paged' => $paged,
@@ -385,8 +386,8 @@ function jo_load_more() {
 	$loop = new WP_Query( $args ); 
 	if($loop->have_posts()) :
 		while ( $loop->have_posts() ) : $loop->the_post(); 
-			get_template_part('parts/card', 'publication');
-		<?php endwhile; 
+			get_template_part( 'template-parts/content-custom', get_post_type() );
+		endwhile; 
 	endif; 
 
 	// $response = '';

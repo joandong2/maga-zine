@@ -50,7 +50,7 @@ p.site-title a {
   font-size: 32px;
 }
 
-.home .page .entry-title,
+.home .page .entry-header .entry-title,
 .home #secondary {
   display: none;
 }
@@ -241,6 +241,17 @@ body .slick-dots li {
   display: flex;
 }
 
+._jo-recent-posts h2 {
+  line-height: 24px;
+  margin-top: 12px;
+}
+
+._jo-recent-posts h2 a {
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 ._jo-recent-posts ._jo-recent-post {
   width: 48%;
   margin-right: 1%;
@@ -271,6 +282,14 @@ body .slick-dots li {
   color: white;
   padding: 7px 15px;
   font-size: 12px;
+}
+
+._jo-recent-post .entry-meta {
+  margin-bottom: 12px;
+}
+
+._jo-recent-post .byline {
+  margin-right: 10px;
 }
 
 /*Footer*/

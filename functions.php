@@ -374,34 +374,41 @@ function jo_load_more() {
 	check_ajax_referer( 'jo_nonce', 'nonce' );  // This function will die if nonce is not correct.
 	$paged = sanitize_text_field($_POST['paged']);
 
-	$ajaxposts = new WP_Query([
-	  'post_type' => 'post',
-	  'posts_per_page' => 3,
-	  'orderby' => 'date',
-	  'order' => 'DESC',
-	  'paged' => $paged,
-	]);
-  
-	$response = '';
-	$max_pages = $ajaxposts->max_num_pages;
-  
-	if($ajaxposts->have_posts()) {
-		ob_start();
-		while($ajaxposts->have_posts()) : $ajaxposts->the_post();
-			$response .= get_template_part('parts/card', 'publication');
-		endwhile;
-		$output = ob_get_contents();
-		ob_end_clean();
-	} else {
-		$response = '';
-	}
+	$args = array(  
+		'post_type' => 'post',
+		'posts_per_page' => 3,
+		'orderby' => 'date',
+		'order' => 'DESC',
+		'paged' => $paged,
+	);
 
-	$result = [
-		'max' => $max_pages,
-		'html' => $output,
-	];
+	$loop = new WP_Query( $args ); 
+	if($loop->have_posts()) :
+		while ( $loop->have_posts() ) : $loop->the_post(); 
+			get_template_part('parts/card', 'publication');
+		<?php endwhile; 
+	endif; 
 
-	wp_send_json($result);
+	// $response = '';
+	// $max_pages = $ajaxposts->max_num_pages;
+  
+	// if($ajaxposts->have_posts()) {
+	// 	ob_start();
+	// 	while($ajaxposts->have_posts()) : $ajaxposts->the_post();
+	// 		$response .= get_template_part('parts/card', 'publication');
+	// 	endwhile;
+	// 	$output = ob_get_contents();
+	// 	ob_end_clean();
+	// } else {
+	// 	$response = '';
+	// }
+
+	// $result = [
+	// 	'max' => $max_pages,
+	// 	'html' => $output,
+	// ];
+
+	// wp_send_json($ajaxposts);
 	wp_die();
   }
   add_action('wp_ajax_jo_load_more', 'jo_load_more');

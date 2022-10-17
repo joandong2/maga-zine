@@ -14,8 +14,8 @@ jQuery(function ($) {
         if (currentPage >= res.max) {
           $("#load-more").hide();
         }
-        console.log("h2h2h2", res);
-        $(".publication-list").append(res.html);
+        //console.log("h2h2h2", res);
+        $(".publication-list").append(res);
       });
   });
 });

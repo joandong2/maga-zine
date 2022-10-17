@@ -315,7 +315,15 @@ function _jo_recent_posts($atts = []) {
 		endif; 
 	?>	</div>
 		<div class="btn__wrapper">
-			<a href="javascript:void(0);" class="btn btn__primary" id="load-more">Load more</a>
+			<a href="javascript:void(0);" class="btn btn__primary" id="load-more">
+				<div class="lds-ellipsis">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				<span>Load More</span>
+			</a>
 		</div> <?php
 	wp_reset_postdata();
 
@@ -344,26 +352,6 @@ function jo_load_more() {
 		endwhile; 
 	endif; 
 
-	// $response = '';
-	// $max_pages = $ajaxposts->max_num_pages;
-  
-	// if($ajaxposts->have_posts()) {
-	// 	ob_start();
-	// 	while($ajaxposts->have_posts()) : $ajaxposts->the_post();
-	// 		$response .= get_template_part('parts/card', 'publication');
-	// 	endwhile;
-	// 	$output = ob_get_contents();
-	// 	ob_end_clean();
-	// } else {
-	// 	$response = '';
-	// }
-
-	// $result = [
-	// 	'max' => $max_pages,
-	// 	'html' => $output,
-	// ];
-
-	// wp_send_json($ajaxposts);
 	wp_die();
   }
   add_action('wp_ajax_jo_load_more', 'jo_load_more');

@@ -321,6 +321,104 @@ body .slick-dots li {
   margin-right: 10px;
 }
 
+.entry-content .btn__wrapper {
+  margin-top: 12px;
+  text-align: center;
+}
+
+#load-more {
+  position: relative;
+  width: 194px;
+  height: 45px;
+  line-height: 45px;
+  padding: 0px;
+  background: #222;
+  color: #fff;
+  text-align: left;
+  text-shadow: none;
+  text-decoration: none;
+  cursor: pointer;
+  filter: none;
+  box-shadow: none;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+}
+
+#load-more:hover {
+  text-decoration: none !important;
+  color: #fff;
+  background: #222;
+  -webkit-transform: translatey(-3px);
+  transform: translatey(-3px);
+  -webkit-box-shadow: 0 20px 30px rgb(0 0 0 / 20%);
+  box-shadow: 0 20px 30px rgb(0 0 0 / 20%);
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 40px;
+  margin-top: -20px;
+  display: none;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 32px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
 /*Footer*/
 .site-footer {
   background: #030303;

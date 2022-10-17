@@ -11,7 +11,12 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('_jo-recent-post'); ?>>
 
-	<?php maga_zine_post_thumbnail(); ?>
+    <div class="entry-header">
+        <?php 
+            maga_zine_post_thumbnail(); 
+            maga_zine_entry_footer();
+        ?>
+    </div>
 
 	<div class="entry-content">
 

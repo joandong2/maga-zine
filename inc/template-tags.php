@@ -40,13 +40,16 @@ if ( ! function_exists( 'maga_zine_posted_by' ) ) :
 	 * Prints HTML with meta information for the current author.
 	 */
 	function maga_zine_posted_by() {
+		$first_name = get_the_author_meta( 'first_name', get_the_author_meta('ID') );
+		$last_name = get_the_author_meta( 'last_name', get_the_author_meta('ID') );
+		$author_img = get_avatar_url(get_the_author_meta('ID'), ['size' => '51']);
+
 		$byline = sprintf(
-			/* translators: %s: post author. */
-			esc_html_x( 'by %s', 'post author', 'maga-zine' ),
-			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'nicename', 'ID' )	) . '</a></span>'
+			esc_html_x( '%s', 'post author', 'maga-zine' ),
+			'<span class="author vcard"><img src="'. $author_img .'"/> <a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . $first_name.' '. $last_name . '</a></span>'
 		);
 
-		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<span class="byline"> ' . $byline . '</span>';
 
 	}
 endif;
@@ -62,7 +65,7 @@ if ( ! function_exists( 'maga_zine_entry_footer' ) ) :
 			$categories_list = get_the_category_list( esc_html__( ', ', 'maga-zine' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'maga-zine' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				printf( '<span class="cat-links">' . esc_html__( '%1$s', 'maga-zine' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
 			/* translators: used between list items, there is a space after the comma */
@@ -73,41 +76,41 @@ if ( ! function_exists( 'maga_zine_entry_footer' ) ) :
 			}
 		}
 
-		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="comments-link">';
-			comments_popup_link(
-				sprintf(
-					wp_kses(
-						/* translators: %s: post title */
-						__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'maga-zine' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					wp_kses_post( get_the_title() )
-				)
-			);
-			echo '</span>';
-		}
+		// if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+		// 	echo '<span class="comments-link">';
+		// 	comments_popup_link(
+		// 		sprintf(
+		// 			wp_kses(
+		// 				/* translators: %s: post title */
+		// 				__( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'maga-zine' ),
+		// 				array(
+		// 					'span' => array(
+		// 						'class' => array(),
+		// 					),
+		// 				)
+		// 			),
+		// 			wp_kses_post( get_the_title() )
+		// 		)
+		// 	);
+		// 	echo '</span>';
+		// }
 
-		edit_post_link(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Edit <span class="screen-reader-text">%s</span>', 'maga-zine' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			),
-			'<span class="edit-link">',
-			'</span>'
-		);
+		// edit_post_link(
+		// 	sprintf(
+		// 		wp_kses(
+		// 			/* translators: %s: Name of current post. Only visible to screen readers */
+		// 			__( 'Edit <span class="screen-reader-text">%s</span>', 'maga-zine' ),
+		// 			array(
+		// 				'span' => array(
+		// 					'class' => array(),
+		// 				),
+		// 			)
+		// 		),
+		// 		wp_kses_post( get_the_title() )
+		// 	),
+		// 	'<span class="edit-link">',
+		// 	'</span>'
+		// );
 	}
 endif;
 

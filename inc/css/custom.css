@@ -158,7 +158,11 @@ h6 {
 }
 
 .main-navigation li {
-  margin-right: 8px;
+  margin: 0 15px;
+}
+
+.main-navigation li:first-child {
+  margin-left: 0;
 }
 
 .main-navigation a {
@@ -216,7 +220,7 @@ body .slick-dots li {
 }
 
 ._slick-slides .content {
-  padding: 30px;
+  padding: 30px 20px;
   display: flex;
   flex-flow: column;
   height: 310px;
@@ -352,6 +356,9 @@ a.wp-block-social-link-anchor {
 }
 .footer-widgets .wp-block-categories .cat-item-6 {
   background-color: #c6d314;
+}
+.footer-widgets .wp-block-categories .cat-item-1 {
+  background-color: #464646;
 }
 
 .site-info {

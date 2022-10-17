@@ -1,11 +1,11 @@
-(function ($) {
+jQuery(function ($) {
   $(".your-class").slick({
     dots: true,
     arrows: false,
     speed: 700,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 4500,
     slidesToShow: 5,
     slidesToScroll: 3,
     responsive: [
@@ -37,4 +37,4 @@
       // instead of a settings object
     ],
   });
-})(jQuery);
+});

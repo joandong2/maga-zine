@@ -62,11 +62,23 @@ if ( ! function_exists( 'maga_zine_entry_footer' ) ) :
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( esc_html__( ', ', 'maga-zine' ) );
-			if ( $categories_list ) {
-				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( '%1$s', 'maga-zine' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			//$categories_list = get_the_category_list( esc_html__( ' ', 'maga-zine' ) );
+
+			$terms_list = wp_get_post_categories( get_the_ID() , array( 'fields'=>'names',  ) );
+			
+			if ( $terms_list ) {
+				echo '<ul class="categories">';
+					foreach ( $terms_list as $term ) {
+						echo '<li class="'.esc_html( strtolower($term) ).'"><a href="#">'.esc_html( $term ).'</a></li>';
+					}
+				echo '</ul>';
 			}
+			
+
+			// if ( $categories_list ) {
+			// 	/* translators: 1: list of categories. */
+			// 	printf( '<span class="cat-links">' . esc_html__( '%1$s', 'maga-zine' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// }
 
 			/* translators: used between list items, there is a space after the comma */
 			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'maga-zine' ) );

@@ -285,6 +285,21 @@ body .slick-dots li {
   font-size: 12px;
 }
 
+._jo-recent-post .entry-header {
+  position: relative;
+}
+
+._jo-recent-post .entry-header img {
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+
+._jo-recent-post .entry-header .categories {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+}
+
 ._jo-recent-post .entry-meta {
   margin-bottom: 12px;
   color: #818181;

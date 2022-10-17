@@ -295,57 +295,11 @@ function _jo_slick_slider($atts = []) {
 }
 add_shortcode('jo_slick_slider', '_jo_slick_slider');
 
-/**
- * Slider Shortcode
- */
-// function _jo_recent_posts($atts = []) {
-// 	$output = "";
-//     $default = array(
-//         'link' => '#',
-//     );
-//     $a = shortcode_atts($default, $atts);
-      
-// 	$postslist = get_posts( array(
-// 		'posts_per_page' => -1,
-// 		'order'          => 'ASC',
-// 		'orderby'        => 'date',
-// 		'post_type'		 => 'post'
-// 		//'category' => 1
-// 	) );
-	
-// 	if ( $postslist ) { 
-// 		$output .= '<div class="_jo-recent-posts">';	
-// 		foreach ( $postslist as $post ) :
-// 			setup_postdata( $post );
-// 			$terms_list = wp_get_post_categories( $post->ID, array( 'fields'=>'names',  ) );
-// 			$featured_image = get_the_post_thumbnail_url($post->ID, 'full');
-
-// 			$output .= '<div class="_jo-recent-post">';
-// 				$output .= '<div class="featured-image" style="background-image:url('.$featured_image.')">';
-// 					$output .= '<ul class="categories">';
-// 						foreach ( $terms_list as $term ) {
-// 							$output .= '<li class="'.esc_html( strtolower($term) ).'"><a href="#">'.esc_html( $term ).'</a></li>';
-// 						}
-// 					$output .= '</ul>';
-// 				$output .= '</div>';
-// 				$output .= '<div class="content">';
-// 					$output .= '<h3><a href="#">'.$post->post_title.'</a></h3>';
-// 					$output .= '<p>'.$post->post_excerpt.'</p>';
-// 				$output .= '</div>';
-// 			$output .= '</div>';
-// 		endforeach;
-// 		$output .= '</div>';
-// 		wp_reset_postdata();
-// 	}
-
-// 	return $output;
-// }
-// add_shortcode('jo_recent_posts', '_jo_recent_posts');
 
 function _jo_recent_posts($atts = []) {
 	$args = array(  
 		'post_type' => 'post',
-		'posts_per_page' => 4,
+		'posts_per_page' => 6,
 		'orderby' => 'date',
 		'order' => 'DESC',
 		'paged' => 1,
@@ -377,7 +331,7 @@ function jo_load_more() {
 
 	$args = array(  
 		'post_type' => 'post',
-		'posts_per_page' => 4,
+		'posts_per_page' => 6,
 		'orderby' => 'date',
 		'order' => 'DESC',
 		'paged' => $paged,

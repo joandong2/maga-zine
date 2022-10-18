@@ -356,3 +356,27 @@ function jo_load_more() {
   }
   add_action('wp_ajax_jo_load_more', 'jo_load_more');
   add_action('wp_ajax_nopriv_jo_load_more', 'jo_load_more');
+
+function _jo_recent_posts_sidebar($atts = []) {
+	$args = array(  
+		'post_type' => 'post',
+		'posts_per_page' => 3,
+		'orderby' => 'date',
+		'order' => 'DESC',
+		'paged' => 1,
+	);
+
+	$loop = new WP_Query( $args ); 
+	ob_start();
+	?> 	<div class="_jo-recent-posts-sidebar"> <?php
+		if($loop->have_posts()):
+				while ($loop->have_posts()): $loop->the_post();
+					get_template_part( 'template-parts/content-customI', get_post_type() );
+				endwhile;
+		endif; 
+	wp_reset_postdata();
+
+	$output = ob_get_clean();
+    return $output;
+}
+add_shortcode('jo_recent_posts_sidebar', '_jo_recent_posts_sidebar');

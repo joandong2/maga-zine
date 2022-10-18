@@ -13,11 +13,14 @@ jQuery(function ($) {
         // if (currentPage >= res.max) {
         //   $("#load-more").hide();
         // }
-        $("#load-more span").hide();
         $("#load-more .lds-ellipsis").css("display", "inline-block");
-        $("._jo-recent-posts").append(res);
-        $("#load-more .lds-ellipsis").css("display", "none");
-        $("#load-more span").show();
+        $("#load-more span").hide();
+
+        setTimeout(function () {
+          $("#load-more .lds-ellipsis").css("display", "none");
+          $("#load-more span").show();
+          $("._jo-recent-posts").append(res);
+        }, 1500);
       });
   });
 });

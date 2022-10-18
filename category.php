@@ -14,14 +14,25 @@
 
 get_header();
 ?>
-
+    <?php 
+        $current_category_id = get_query_var('cat');
+        $current_category_obj = get_category($current_category_id);
+        $image = get_field('featured_image', $current_category_obj->taxonomy.'_'.$current_category_obj->term_id);
+    ?>
+    <div class="category-banner" style="background-image: url('<?php echo $image['url']; ?>')">
+        <div class="overlay"></div>
+        <div class="content">
+            <h2><?php echo $current_category_obj->name; ?></h2>
+            <p><?php echo $current_category_obj->description; ?></p>
+        </div>
+    </div>
 	<main id="primary" class="site-main">
-		<div class="container">
+		<div class="container _jo-recent-posts">
 			<?php
 			while ( have_posts() ) :
 				the_post();
 
-				get_template_part( 'template-parts/content', 'page' );
+				get_template_part( 'template-parts/content-category', 'page' );
 
 				// If comments are open or we have at least one comment, load up the comment template.
 				if ( comments_open() || get_comments_number() ) :

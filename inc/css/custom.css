@@ -341,8 +341,10 @@ body .slick-dots li {
   margin-right: 10px;
 }
 
-.entry-content .btn__wrapper {
+.entry-content .btn__wrapper,
+.btn__wrapper {
   margin-top: 12px;
+  margin-bottom: 20px;
   text-align: center;
 }
 

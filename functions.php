@@ -301,7 +301,7 @@ add_shortcode('jo_slick_slider', '_jo_slick_slider');
 function _jo_recent_posts($atts = []) {
 	$args = array(  
 		'post_type' => 'post',
-		'posts_per_page' => 6,
+		'posts_per_page' => get_option('posts_per_page'),
 		'orderby' => 'date',
 		'order' => 'DESC',
 		'paged' => 1,
@@ -338,16 +338,20 @@ function jo_load_more() {
 
 	check_ajax_referer( 'jo_nonce', 'nonce' );  // This function will die if nonce is not correct.
 	$paged = sanitize_text_field($_POST['paged']);
+	$curr_id = (int) $_POST['curr_id'];
+
 
 	$args = array(  
 		'post_type' => 'post',
-		'posts_per_page' => 6,
+		'category__in' => $curr_id ? $curr_id : null,
+		'posts_per_page' => get_option('posts_per_page'),
 		'orderby' => 'date',
 		'order' => 'DESC',
 		'paged' => $paged,
 	);
 
 	$loop = new WP_Query( $args ); 
+
 	if($loop->have_posts()) :
 		while ( $loop->have_posts() ) : $loop->the_post(); 
 			get_template_part( 'template-parts/content-custom', get_post_type() );
@@ -362,7 +366,7 @@ function jo_load_more() {
 function _jo_recent_posts_sidebar($atts = []) {
 	$args = array(  
 		'post_type' => 'post',
-		'posts_per_page' => 4,
+		'posts_per_page' => 5,
 		'orderby' => 'date',
 		'order' => 'DESC',
 		'paged' => 1,

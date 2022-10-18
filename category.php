@@ -42,6 +42,17 @@ get_header();
 			endwhile; // End of the loop.
 			?>
 		</div>
+        <div class="btn__wrapper">
+			<a href="javascript:void(0);" class="btn btn__primary" data-id="<?php echo $current_category_obj->term_id ?>" id="load-more">
+				<div class="lds-ellipsis">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				<span>Load More</span>
+			</a>
+		</div>
 	</main><!-- #main -->
 
 <?php

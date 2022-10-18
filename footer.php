@@ -50,7 +50,7 @@
 					</a> -->
 					<?php
 						/* translators: 1: Theme name, 2: Theme author. */
-						printf( esc_html__( 'Theme: %1$s by %2$s.', 'maga-zine' ), 'maga-zine', '<a href="https://www.joblenda.me/">John Oblenda</a>' );
+						printf( esc_html__( '%1$s by %2$s.', 'maga-zine' ), '&copy; All Rights Rserverd. Noypi 2022', '<a href="https://www.joblenda.me/">John Oblenda</a>' );
 					?>
 				</div>
 			</div><!-- .site-info -->

@@ -13,7 +13,6 @@ jQuery(function ($) {
         // if (currentPage >= res.max) {
         //   $("#load-more").hide();
         // }
-
         setTimeout(function () {
           $("#load-more .lds-ellipsis").css("display", "none");
           $("#load-more span").show();

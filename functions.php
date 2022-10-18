@@ -264,7 +264,9 @@ function _jo_slick_slider($atts = []) {
 		'posts_per_page' => 12,
 		'order'          => 'ASC',
 		'orderby'        => 'date',
-		'post_type'		 => 'post'
+		'post_type'		 => 'post',
+		'meta_key'      => 'editors_pick',
+    	'meta_value'    => true
 		//'category' => 1
 	) );
 	
@@ -360,7 +362,7 @@ function jo_load_more() {
 function _jo_recent_posts_sidebar($atts = []) {
 	$args = array(  
 		'post_type' => 'post',
-		'posts_per_page' => 3,
+		'posts_per_page' => 4,
 		'orderby' => 'date',
 		'order' => 'DESC',
 		'paged' => 1,

@@ -253,6 +253,7 @@ body .slick-dots li {
   text-decoration: none;
   font-weight: bold;
   color: #fff;
+  font-family: "Poppins", sans-serif;
 }
 
 ._jo-recent-posts {
@@ -262,14 +263,15 @@ body .slick-dots li {
 }
 
 ._jo-recent-posts h2 {
-  line-height: 24px;
+  line-height: 18px;
   margin-top: 12px;
 }
 
 ._jo-recent-posts h2 a {
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: none;
   font-weight: bold;
+  font-family: "Poppins", sans-serif;
 }
 
 ._jo-recent-posts ._jo-recent-post {
@@ -483,6 +485,8 @@ body .slick-dots li {
 
 ._jo-recent-post-sidebar h2 a {
   font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
 }
 
 /*Footer*/

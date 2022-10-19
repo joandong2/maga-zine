@@ -13,14 +13,16 @@ jQuery(function ($) {
       curr_id: curr_id, // used as $_POST['val'] in ajax callback
     }),
       $.post(ajax_object.jo_ajaxurl, data, function (res) {
-        // if (currentPage >= res.max) {
-        //   $("#load-more").hide();
-        // }
-        setTimeout(function () {
+        if (res === "") {
           $("#load-more .lds-ellipsis").css("display", "none");
-          $("#load-more span").show();
-          $("._jo-recent-posts").append(res);
-        }, 500);
+          $("#load-more span").show().html("No more posts..");
+        } else {
+          setTimeout(function () {
+            $("#load-more .lds-ellipsis").css("display", "none");
+            $("#load-more span").show();
+            $("._jo-recent-posts").append(res);
+          }, 500);
+        }
       });
   });
 });

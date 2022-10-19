@@ -366,7 +366,7 @@ function jo_load_more() {
 function _jo_recent_posts_sidebar($atts = []) {
 	$args = array(  
 		'post_type' => 'post',
-		'posts_per_page' => 5,
+		'posts_per_page' => 3,
 		'orderby' => 'date',
 		'order' => 'DESC',
 		'paged' => 1,
@@ -386,3 +386,22 @@ function _jo_recent_posts_sidebar($atts = []) {
     return $output;
 }
 add_shortcode('jo_recent_posts_sidebar', '_jo_recent_posts_sidebar');
+
+function _jo_get_categories($atts = []) {
+	ob_start();
+
+	$categories = get_categories( array(
+		'orderby' => 'name',
+		'order'   => 'ASC'
+	) );
+		echo '<ul class="category">';
+        foreach ( $categories as $category ) {
+			$image = get_field('featured_image', $category->taxonomy.'_'.$category->term_id);
+            echo '<li style="background-image: url('.$image['url'].')"><div class="overlay"></div><a href="#"><span>' . esc_html($category->name) .'</span> <div class="num-count">'. $category->count. '</div></li></a>';    
+        }
+		echo '</ul>';
+	
+	$output = ob_get_clean();
+    return $output;
+}
+add_shortcode('jo_get_categories', '_jo_get_categories');

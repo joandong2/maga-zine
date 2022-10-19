@@ -11,6 +11,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+    <?php //var_dump(the_ID()); ?>
 	<header class="entry-header">
 		<?php
 		maga_zine_entry_footer();
@@ -25,8 +26,12 @@
 			?>
 			<div class="entry-meta">
 				<?php
+                maga_zine_posted_by();
 				maga_zine_posted_on();
-				maga_zine_posted_by();
+            
+                $comments_count = get_comments( $args );
+                echo '<span class="comment-meta"><i class="fa-regular fa-comments"></i> '.(int) get_comments( $args ).' comment</span>';
+
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>

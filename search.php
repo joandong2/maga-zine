@@ -37,7 +37,7 @@ get_header();
 
 			endwhile;
 
-			the_posts_navigation();
+			//the_posts_navigation();
 
 		else :
 
@@ -47,7 +47,7 @@ get_header();
 		?>
 		</div>
 		<div class="btn__wrapper">
-			<a href="javascript:void(0);" class="btn btn__primary" id="load-more">
+			<a href="javascript:void(0);" class="btn btn__primary" data-keyword="<?php echo get_search_query() ?>" id="load-more">
 				<div class="lds-ellipsis">
 					<div></div>
 					<div></div>

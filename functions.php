@@ -339,16 +339,28 @@ function jo_load_more() {
 	check_ajax_referer( 'jo_nonce', 'nonce' );  // This function will die if nonce is not correct.
 	$paged = sanitize_text_field($_POST['paged']);
 	$curr_id = (int) $_POST['curr_id'];
+	$curr_keyword = str_replace(" ", "+", $_POST['curr_keyword']);
 
-
-	$args = array(  
-		'post_type' => 'post',
-		'category__in' => $curr_id ? $curr_id : null,
-		'posts_per_page' => get_option('posts_per_page'),
-		'orderby' => 'date',
-		'order' => 'DESC',
-		'paged' => $paged,
-	);
+	if($curr_keyword) {
+		$args = array(  
+			's' => $curr_keyword,
+			'post_type' => 'post',
+			'category__in' => null,
+			'posts_per_page' => get_option('posts_per_page'),
+			'orderby' => 'date',
+			'order' => 'DESC',
+			'paged' => $paged,
+		);
+	} else {
+		$args = array(  
+			'post_type' => 'post',
+			'category__in' => $curr_id ? $curr_id : null,
+			'posts_per_page' => get_option('posts_per_page'),
+			'orderby' => 'date',
+			'order' => 'DESC',
+			'paged' => $paged,
+		);
+	}
 
 	$loop = new WP_Query( $args ); 
 

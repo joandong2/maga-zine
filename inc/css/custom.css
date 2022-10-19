@@ -130,8 +130,10 @@ h5.heading {
 .top-header p,
 .top-header .widget {
   margin: 0;
+  padding-top: 5px;
   color: #fff;
   font-size: 11px;
+  line-height: 18px;
 }
 
 .top-header ul {
@@ -163,8 +165,9 @@ h5.heading {
   background-color: #fff;
 }
 
-.main-navigation {
-  margin-top: 20px;
+header.page-header h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .main-navigation li {
@@ -176,9 +179,21 @@ h5.heading {
 }
 
 .main-navigation a {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   text-transform: capitalize;
+}
+
+.header-container {
+  display: flex;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.search-form {
+  flex-shrink: unset;
+  width: auto;
 }
 
 /*Content*/
@@ -418,9 +433,6 @@ body .slick-dots li {
 }
 
 .single .num-count {
-  -webkit-transform: translate3d(0, 0, 0) perspective(1px) translateY(-50%);
-  -ms-transform: translate3d(0, 0, 0) perspective(1px) translateY(-50%);
-  transform: translate3d(0, 0, 0) perspective(1px) translateY(-50%);
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
   border-radius: 100px;

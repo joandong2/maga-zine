@@ -42,7 +42,7 @@
 
 	<header id="masthead" class="site-header sticky-top">
 		<div class="container">
-			<div class="row align-items-start">
+			<div class="row header-container">
 				<div class="site-branding col-md-1">
 					<?php
 					the_custom_logo();
@@ -66,6 +66,7 @@
 					);
 					?>
 				</nav><!-- #site-navigation -->
+				<?php get_search_form(); ?> 
 			</div>
 		</div>
 	</header><!-- #masthead -->

@@ -81,11 +81,11 @@ if ( ! function_exists( 'maga_zine_entry_footer' ) ) :
 			// }
 
 			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'maga-zine' ) );
-			if ( $tags_list ) {
-				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'maga-zine' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			}
+			// $tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'maga-zine' ) );
+			// if ( $tags_list ) {
+			// 	/* translators: 1: list of tags. */
+			// 	printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'maga-zine' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// }
 		}
 
 		// if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {

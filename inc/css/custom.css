@@ -176,9 +176,12 @@ h5.heading {
   background-color: #fff;
 }
 
+h1,
 header.page-header h1 {
   font-size: 24px;
+  line-height: 20px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .main-navigation li {
@@ -406,7 +409,8 @@ body .slick-dots li {
   margin-left: 10px;
 }
 
-.single h2.heading {
+.single h2.heading,
+.page h2.heading {
   width: 100% !important;
   color: #000;
   display: block;
@@ -419,20 +423,23 @@ body .slick-dots li {
   position: relative;
 }
 
-.single .single-right {
+.single .single-right,
+.page .single-right {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   align-self: flex-start;
 }
 
-.single .single-right ul.category {
+.single .single-right ul.category,
+.page .single-right ul.category {
   list-style: none;
   margin: 0 0 20px 0;
   padding: 0;
 }
 
-.single .single-right ul.category li {
+.single .single-right ul.category li,
+.page .single-right ul.category li {
   background-size: cover;
   background-position: center center;
   border-radius: 10px;
@@ -442,7 +449,8 @@ body .slick-dots li {
   position: relative;
 }
 
-.single .single-right ul.category li .overlay {
+.single .single-right ul.category li .overlay,
+.page .single-right ul.category li .overlay {
   background: rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
@@ -453,7 +461,8 @@ body .slick-dots li {
   -moz-border-radius: 10px;
 }
 
-.single .single-right ul.category li a {
+.single .single-right ul.category li a,
+.page .single-right ul.category li a {
   color: #fff;
   padding: 10px 20px;
   z-index: 4444;
@@ -464,7 +473,8 @@ body .slick-dots li {
   align-items: center;
 }
 
-.single .num-count {
+.single .num-count,
+.page .num-count {
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
   border-radius: 100px;

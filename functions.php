@@ -417,3 +417,32 @@ function _jo_get_categories($atts = []) {
     return $output;
 }
 add_shortcode('jo_get_categories', '_jo_get_categories');
+
+add_action( 'init', 'jo_Preloader' );
+function jo_Preloader() { 
+	if(!is_admin() &&  $GLOBALS["pagenow"] !== "wp-login.php" ) { 
+		$delay = 1;	//seconds
+		$loader = 'https://redpishi.com/wp-content/uploads/2022/06/preloader3.svg';
+		$overlayColor = '#f8f8f8';	
+	
+		echo '<div class="Preloader"><img src="'.$loader.'" alt="" style="height: 150px;"></div>
+		<style>
+		.Preloader {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background-color: '.$overlayColor.';
+			z-index: 100000;
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+		}
+		</style>
+		<script>
+			document.body.style.overflow = "hidden";
+			document.addEventListener("DOMContentLoaded", () => setTimeout( function() { document.querySelector("div.Preloader").remove(); document.body.style.overflow = "visible"; } , '.$delay.' * 1000));
+		</script>'; 
+	}
+}

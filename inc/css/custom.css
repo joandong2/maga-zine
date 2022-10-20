@@ -230,6 +230,10 @@ header.page-header h1 {
   min-width: 220px;
 }
 
+.search-form input[type="search"]:focus-visible {
+  outline: none;
+}
+
 /*Content*/
 body .slick-dots li {
   width: 5px;
@@ -244,6 +248,7 @@ body .slick-dots li {
   -moz-border-radius: 10px;
   position: relative;
   margin-right: 10px;
+  height: auto !important;
 }
 
 ._slick-slides .overlay {
@@ -579,7 +584,7 @@ body .slick-dots li {
   position: relative;
   width: 80px;
   height: 40px;
-  margin-top: -20px;
+  margin-top: -14px;
   display: none;
 }
 .lds-ellipsis div {

@@ -26,7 +26,7 @@
 			<div class="entry-meta">
 				<?php
 				maga_zine_posted_on();
-				maga_zine_posted_by();
+				//maga_zine_posted_by();
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>

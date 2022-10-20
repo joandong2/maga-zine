@@ -44,6 +44,11 @@ if ( ! function_exists( 'maga_zine_posted_by' ) ) :
 		$last_name = get_the_author_meta( 'last_name', get_the_author_meta('ID') );
 		$author_img = get_avatar_url(get_the_author_meta('ID'), ['size' => '51']);
 
+		// $byline = sprintf(
+		// 	esc_html_x( '%s', 'post author', 'maga-zine' ),
+		// 	'<span class="author vcard"><img src="'. $author_img .'"/> <a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . $first_name.' '. $last_name . '</a></span>'
+		// );
+
 		$byline = sprintf(
 			esc_html_x( '%s', 'post author', 'maga-zine' ),
 			'<span class="author vcard"><img src="'. $author_img .'"/> <a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . $first_name.' '. $last_name . '</a></span>'
@@ -64,12 +69,13 @@ if ( ! function_exists( 'maga_zine_entry_footer' ) ) :
 			/* translators: used between list items, there is a space after the comma */
 			//$categories_list = get_the_category_list( esc_html__( ' ', 'maga-zine' ) );
 
-			$terms_list = wp_get_post_categories( get_the_ID() , array( 'fields'=>'names',  ) );
+			$terms_list = wp_get_post_categories( get_the_ID() , array( 'fields'=>'all',  ) );
 			
 			if ( $terms_list ) {
 				echo '<ul class="categories">';
 					foreach ( $terms_list as $term ) {
-						echo '<li class="'.esc_html( strtolower($term) ).'"><a href="#">'.esc_html( $term ).'</a></li>';
+						//var_dump($term); die;
+						echo '<li class="'.esc_html( strtolower($term->name) ).'"><a href="'. get_category_link( $term->term_id ) .'">'.esc_html( $term->name ).'</a></li>';
 					}
 				echo '</ul>';
 			}

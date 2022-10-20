@@ -197,8 +197,6 @@ header.page-header h1 {
 
 .header-container {
   display: flex;
-  display: flex;
-  flex-wrap: nowrap;
   align-items: center;
 }
 
@@ -391,7 +389,7 @@ body .slick-dots li {
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .single .byline .author img {
@@ -785,4 +783,35 @@ a.wp-block-social-link-anchor {
 
 .site-info a {
   font-size: 12px;
+}
+
+@media only screen and (max-width: 600px) {
+  .top-header .col-md-2,
+  .main-navigation {
+    display: none;
+  }
+  ._jo-recent-posts ._jo-recent-post,
+  .footer-widgets .row-cols-3 .col {
+    width: 100%;
+  }
+
+  .search-form {
+    margin: 0 auto 20px;
+  }
+
+  .site-info {
+    text-align: center;
+  }
+
+  .single-container {
+    flex-direction: column;
+  }
+
+  .single-container .col-md-8 {
+    width: 100%;
+  }
+
+  .single .single-right {
+    position: relative;
+  }
 }

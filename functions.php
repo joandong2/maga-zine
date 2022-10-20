@@ -274,7 +274,7 @@ function _jo_slick_slider($atts = []) {
 		$output .= '<div class="your-class">';	
 		foreach ( $postslist as $post ) :
 			setup_postdata( $post );
-			$terms_list = wp_get_post_categories( $post->ID, array( 'fields'=>'names',  ) );
+			$terms_list = wp_get_post_categories( $post->ID, array( 'fields'=>'all',  ) );
 			$featured_image = get_the_post_thumbnail_url($post->ID, 'full');
 
 			$output .= '<div class="_slick-slides" style="background-image:url('.$featured_image.')">';
@@ -282,10 +282,10 @@ function _jo_slick_slider($atts = []) {
 				$output .= '<div class="content">';
 					$output .= '<ul class="categories">';
 						foreach ( $terms_list as $term ) {
-							$output .= '<li class="'.esc_html( strtolower($term) ).'"><a href="#">'.esc_html( $term ).'</a></li>';
+							$output .= '<li class="'.esc_html( strtolower($term->name) ).'"><a href="'. get_category_link( $term->term_id ) .'">'.esc_html( $term->name ).'</a></li>';
 						}
 					$output .= '</ul>';
-					$output .= '<h3><a href="#">'.$post->post_title.'</a></h3>';
+					$output .= '<h3><a href="'. esc_url( get_permalink( $post->ID ) ) .'">'.$post->post_title.'</a></h3>';
 				$output .= '</div>';
 			$output .= '</div>';
 		endforeach;
@@ -389,7 +389,7 @@ function _jo_recent_posts_sidebar($atts = []) {
 	?> 	<div class="_jo-recent-posts-sidebar"> <?php
 		if($loop->have_posts()):
 				while ($loop->have_posts()): $loop->the_post();
-					get_template_part( 'template-parts/content-customI', get_post_type() );
+					get_template_part( 'template-parts/content-custom-sidebar', get_post_type() );
 				endwhile;
 		endif; 
 	wp_reset_postdata();

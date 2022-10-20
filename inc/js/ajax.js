@@ -4,9 +4,6 @@ jQuery(function ($) {
   $("#load-more").on("click", function () {
     curr_id = $(this).attr("data-id");
     curr_keyword = $(this).attr("data-keyword");
-
-    //console.log("key", curr_keyword.replace(/ /g, "+"));
-
     $("#load-more .lds-ellipsis").css("display", "inline-block");
     $("#load-more span").hide();
     currentPage++; // Do currentPage + 1, because we want to load the next page

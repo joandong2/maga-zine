@@ -25,7 +25,7 @@ body {
 p,
 a,
 ul li {
-  font-size: 14px;
+  font-size: 15px;
   -webkit-transition: all 0.2 ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
@@ -139,7 +139,7 @@ h5.heading {
   margin: 0;
   padding-top: 5px;
   color: #fff;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 18px;
 }
 
@@ -161,7 +161,7 @@ h5.heading {
 .top-header ul li a {
   color: #fff;
   text-decoration: none;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .top-header ul li a:hover {
@@ -174,6 +174,8 @@ h5.heading {
 
 .site-header {
   background-color: #fff;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 30px;
 }
 
 h1,
@@ -193,9 +195,10 @@ header.page-header h1 {
 }
 
 .main-navigation a {
-  font-size: 13px;
+  font-size: 14px;
   text-transform: capitalize;
   padding: 3px 15px;
+  font-weight: bold;
 }
 
 .main-navigation li.current-menu-item a {
@@ -239,12 +242,12 @@ header.page-header h1 {
     #00b4db
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #fff;
-  padding: 8px 15px 7px 15px;
+  padding: 11px 15px;
   border: none;
 }
 
 .search-form input[type="search"] {
-  padding: 4px;
+  padding: 7px;
   min-width: 220px;
 }
 
@@ -694,13 +697,12 @@ body .slick-dots li {
 }
 
 ._jo-recent-post-sidebar h2 {
-  line-height: 18px;
+  line-height: 16px;
   margin-top: 0;
 }
 
 ._jo-recent-post-sidebar h2 a {
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
+  font-size: 15px;
   font-weight: bold;
 }
 

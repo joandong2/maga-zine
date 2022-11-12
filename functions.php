@@ -328,15 +328,20 @@ function _jo_recent_posts($atts = []) {
 		endif; 
 	?>	</div>
 		<div class="btn__wrapper">
-			<a href="javascript:void(0);" class="btn btn__primary" id="load-more">
-				<div class="lds-ellipsis">
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-				</div>
-				<span>Load More</span>
-			</a>
+			<?php if($max_page > 1) { ?>
+				<a href="javascript:void(0);" class="btn btn__primary" id="load-more">
+					<div class="lds-ellipsis">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+					<span>Load More</span>
+				</a>
+			<?php } else { ?>
+				<a href="javascript:void(0);" class="load-more-button">No more posts...</a>
+			<?php } ?>
+			
 		</div> <?php
 	wp_reset_postdata();
 

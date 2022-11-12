@@ -43,15 +43,20 @@ get_header();
 			?>
 		</div>
         <div class="btn__wrapper">
-			<a href="javascript:void(0);" class="btn btn__primary" data-id="<?php echo $current_category_obj->term_id ?>" id="load-more">
-				<div class="lds-ellipsis">
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-				</div>
-				<span>Load More</span>
-			</a>
+			<?php 
+			if($current_category_obj->count > get_option('posts_per_page')) { ?>
+					<a href="javascript:void(0);" class="btn btn__primary load-more-button" data-id="<?php echo $current_category_obj->term_id ?>" id="load-more">
+					<div class="lds-ellipsis">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+					<span>Load More</span>
+				</a>
+			<?php } else { ?>
+				<a href="javascript:void(0);" class="load-more-button">No more posts...</a>
+			<?php } ?>
 		</div>
 	</main><!-- #main -->
 

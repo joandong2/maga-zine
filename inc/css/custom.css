@@ -568,7 +568,7 @@ body .slick-dots li {
   margin-bottom: 3px;
 }
 
-#load-more {
+.load-more-button {
   position: relative;
   width: 194px;
   height: 45px;
@@ -593,7 +593,7 @@ body .slick-dots li {
   border-radius: 100px;
 }
 
-#load-more:hover {
+.load-more-button:hover {
   text-decoration: none !important;
   color: #fff;
   background: #222;
@@ -601,6 +601,11 @@ body .slick-dots li {
   transform: translatey(-3px);
   -webkit-box-shadow: 0 20px 30px rgb(0 0 0 / 20%);
   box-shadow: 0 20px 30px rgb(0 0 0 / 20%);
+}
+
+.load-more-button:visited,
+.load-more-button:focus {
+  color: white;
 }
 
 .lds-ellipsis {

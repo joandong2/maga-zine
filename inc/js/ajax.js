@@ -15,6 +15,7 @@ jQuery(function ($) {
       curr_keyword: curr_keyword, // used as $_POST['val'] in ajax callback
     }),
       $.post(ajax_object.jo_ajaxurl, data, function (res) {
+        console.log(res);
         if (res === "") {
           $("#load-more .lds-ellipsis").css("display", "none");
           $("#load-more span").show().html("No more posts..");

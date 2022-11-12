@@ -297,8 +297,14 @@ function _jo_slick_slider($atts = []) {
 }
 add_shortcode('jo_slick_slider', '_jo_slick_slider');
 
-
+/**
+ * custom recent posts
+ */
 function _jo_recent_posts($atts = []) {
+	//$count_pages = wp_count_posts( $post_type = 'page' );
+	// $count_pages = wp_count_posts()->publish;
+	// $per_page = get_option('posts_per_page');
+
 	$args = array(  
 		'post_type' => 'post',
 		'posts_per_page' => get_option('posts_per_page'),
@@ -307,7 +313,12 @@ function _jo_recent_posts($atts = []) {
 		'paged' => 1,
 	);
 
-	$loop = new WP_Query( $args ); 
+	$loop = new WP_Query( $args );
+	$currentpage = $loop->query['paged'];
+	$max_page = $loop->max_num_pages;
+	
+	var_dump($currentpage, $max_page);die;
+
 	ob_start();
 	?> 	<div class="_jo-recent-posts"> <?php
 		if($loop->have_posts()):

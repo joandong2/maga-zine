@@ -316,8 +316,6 @@ function _jo_recent_posts($atts = []) {
 	$loop = new WP_Query( $args );
 	$currentpage = $loop->query['paged'];
 	$max_page = $loop->max_num_pages;
-	
-	var_dump($currentpage, $max_page);die;
 
 	ob_start();
 	?> 	<div class="_jo-recent-posts"> <?php
@@ -329,7 +327,7 @@ function _jo_recent_posts($atts = []) {
 	?>	</div>
 		<div class="btn__wrapper">
 			<?php if($max_page > 1) { ?>
-				<a href="javascript:void(0);" class="btn btn__primary" id="load-more">
+				<a href="javascript:void(0);" data-max="<?php echo $max_page ?>" class="btn btn__primary load-more-button" id="load-more">
 					<div class="lds-ellipsis">
 						<div></div>
 						<div></div>
